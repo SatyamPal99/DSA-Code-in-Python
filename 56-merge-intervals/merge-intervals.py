@@ -1,5 +1,6 @@
 class Solution:
     def merge(self, arr: List[List[int]]) -> List[List[int]]:
+        # TC = O(nlogn + 2n)
         ans=[]
         arr.sort()
         for i in range(len(arr)):
@@ -13,7 +14,7 @@ class Solution:
             ans.append([st,end])
         return ans
 
-
+        # TC=O(N)
         """ans=[]
         arr.sort()
         for i in range(len(arr)):
