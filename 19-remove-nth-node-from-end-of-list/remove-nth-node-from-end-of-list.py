@@ -15,7 +15,7 @@ class Solution:
         k=c-n
         print(k)
         print(c)
-        if k==0 or k==1:
+        if k==0 :
             if k==0 and c==1:
                 return None
             elif k==0 and c>1:
