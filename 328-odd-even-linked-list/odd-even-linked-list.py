@@ -5,7 +5,7 @@
 #         self.next = next
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        st1=[]
+        """st1=[]
         st2=[]
         temp=head
         c=1
@@ -25,5 +25,28 @@ class Solution:
                 temp.val=st2.pop(0)
             
             temp=temp.next
+        return head"""
+
+        if head==None or head.next==None:
+            return head
+        st=[]
+        temp=head
+        while temp!=None and temp.next!=None:
+            st.append(temp.val)
+            temp=temp.next.next
+        if temp:
+            st.append(temp.val)
+
+        temp=head.next
+        while temp!=None and temp.next!=None:
+            st.append(temp.val)
+            temp=temp.next.next
+        if temp:
+            st.append(temp.val)
+        temp=head
+        while temp!=None:
+            temp.val=st.pop(0)
+            temp=temp.next
         return head
 
+        
