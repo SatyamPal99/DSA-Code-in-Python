@@ -5,6 +5,8 @@
 #         self.next = next
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head==None or head.next==None:
+            return head
         """st1=[]
         st2=[]
         temp=head
@@ -27,8 +29,7 @@ class Solution:
             temp=temp.next
         return head"""
 
-        if head==None or head.next==None:
-            return head
+        """
         st=[]
         temp=head
         while temp!=None and temp.next!=None:
@@ -47,6 +48,20 @@ class Solution:
         while temp!=None:
             temp.val=st.pop(0)
             temp=temp.next
+        return head"""
+
+        odd=head
+        even=head.next
+        head1=head
+        head2=head.next
+        while (even!=None and even.next!=None):
+            odd.next=odd.next.next
+            odd=odd.next
+            even.next=even.next.next
+            even=even.next
+        odd.next=head2
         return head
+        
+
 
         
