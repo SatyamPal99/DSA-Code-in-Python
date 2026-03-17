@@ -49,17 +49,16 @@ class Solution:
             temp.val=st.pop(0)
             temp=temp.next
         return head"""
-
+# Optimized Approach.....
         odd=head
         even=head.next
-        head1=head
-        head2=head.next
+        head1=head.next
         while (even!=None and even.next!=None):
             odd.next=odd.next.next
             odd=odd.next
             even.next=even.next.next
             even=even.next
-        odd.next=head2
+        odd.next=head1
         return head
         
 
