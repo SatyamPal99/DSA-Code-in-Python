@@ -16,8 +16,7 @@ class Solution:
         return False"""
 
         #Optimized approach (Using Tortoise and Hare Algo)....
-        if head==None:
-            return False
+        
         up=head
         down=head
         while (up!=None and up.next!=None):
