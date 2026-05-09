@@ -5,7 +5,7 @@
 #         self.next = next
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        arr=[]
+        """arr=[]
         temp1=list1
         temp2=list2
         while temp1!=None:
@@ -24,5 +24,33 @@ class Solution:
                 new=ListNode(arr[i])
                 temp.next=new
                 temp=temp.next
-        return head
+        return head"""
+
+        #Optimized 
+        temp1=list1
+        temp2=list2
+        head=ListNode(-1)
+        temp=head
+        while(temp1!=None and temp2!=None ):
+            if temp1.val<temp2.val:
+                temp.next=temp1
+                temp1=temp1.next
+                temp=temp.next
+            elif temp1.val>temp2.val:
+                temp.next=temp2
+                temp2=temp2.next
+                temp=temp.next
+            else:
+                temp.next=temp1
+                temp1=temp1.next
+                temp=temp.next
+                temp.next=temp2
+                temp2=temp2.next
+                temp=temp.next
+        if temp2==None:
+            temp.next=temp1
+        elif temp1==None:
+            temp.next=temp2
+        return head.next
+
                 
