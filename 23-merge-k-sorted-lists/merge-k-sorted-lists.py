@@ -5,6 +5,15 @@
 #         self.next = next
 from typing import List, Optional
 class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        """if not lists:
+            return None
+        return self.divideAndConquer(lists, 0, len(lists) - 1)
+
+
+
+
+
     def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         if not l1:
             return l2
@@ -30,4 +39,21 @@ class Solution:
         mid = left + (right - left) // 2
         l1 = self.divideAndConquer(lists, left, mid)
         l2 = self.divideAndConquer(lists, mid + 1, right)
-        return self.mergeTwoLists(l1, l2)
+        return self.mergeTwoLists(l1, l2)"""
+
+
+        arr=[]
+        for i in range(len(lists)):
+            temp=lists[i]
+            while temp!=None:
+                arr.append(temp.val)
+                temp=temp.next
+        arr.sort()
+        dummy=ListNode(-1)
+        temp=dummy
+        for i in range(len(arr)):
+            new=ListNode(arr[i])
+            temp.next=new
+            temp=temp.next
+        return dummy.next
+
