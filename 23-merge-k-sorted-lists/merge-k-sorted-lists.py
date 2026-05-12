@@ -3,6 +3,7 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+from queue import PriorityQueue
 from typing import List, Optional
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
@@ -22,7 +23,7 @@ class Solution:
         return dummy.next"""
 
         # Optimized code
-        if len(lists)==0:
+        """if len(lists)==0:
             return None
         head=lists[0]
         for i in range(1,len(lists)):
@@ -52,5 +53,20 @@ class Solution:
             curr.next=temp2
         elif temp2==None:
             curr.next=temp1
-        return dummy.next   
+        return dummy.next  """
+
+        #optimized (using priority Queue)
+        dummy=ListNode(0)
+        curr=dummy
+        pq=PriorityQueue()
+        for idx,lst in enumerate(lists):
+            if lst:
+                pq.put((lst.val,idx,lst)) 
+        while not pq.empty():
+            data,idx,minNode=pq.get()
+            if minNode.next:
+                pq.put((minNode.next.val,idx,minNode.next))
+            curr.next=minNode
+            curr=curr.next
+        return dummy.next
 
