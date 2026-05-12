@@ -6,43 +6,7 @@
 from typing import List, Optional
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        """if not lists:
-            return None
-        return self.divideAndConquer(lists, 0, len(lists) - 1)
-
-
-
-
-
-    def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        if not l1:
-            return l2
-        if not l2:
-            return l1
-
-        if l1.val < l2.val:
-            l1.next = self.mergeTwoLists(l1.next, l2)
-            return l1
-        else:
-            l2.next = self.mergeTwoLists(l1, l2.next)
-            return l2
-
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        if not lists:
-            return None
-        return self.divideAndConquer(lists, 0, len(lists) - 1)
-
-    def divideAndConquer(self, lists: List[Optional[ListNode]], left: int, right: int) -> Optional[ListNode]:
-        if left == right:
-            return lists[left]
-
-        mid = left + (right - left) // 2
-        l1 = self.divideAndConquer(lists, left, mid)
-        l2 = self.divideAndConquer(lists, mid + 1, right)
-        return self.mergeTwoLists(l1, l2)"""
-
-
-        arr=[]
+        """arr=[]
         for i in range(len(lists)):
             temp=lists[i]
             while temp!=None:
@@ -55,5 +19,38 @@ class Solution:
             new=ListNode(arr[i])
             temp.next=new
             temp=temp.next
-        return dummy.next
+        return dummy.next"""
+
+        # Optimized code
+        if len(lists)==0:
+            return None
+        head=lists[0]
+        for i in range(1,len(lists)):
+            head=self.fun(head,lists[i])
+        return head
+
+    def fun(self,temp1, temp2):
+        dummy=ListNode(-1)
+        curr=dummy
+        while temp1!=None and temp2!=None :
+            if temp1.val<temp2.val:
+                curr.next=temp1
+                temp1=temp1.next
+                curr=curr.next
+            elif temp2.val<temp1.val:
+                curr.next=temp2
+                temp2=temp2.next
+                curr=curr.next
+            else:
+                curr.next=temp1
+                curr=curr.next
+                temp1=temp1.next
+                curr.next=temp2
+                temp2=temp2.next
+                curr=curr.next
+        if temp1==None:
+            curr.next=temp2
+        elif temp2==None:
+            curr.next=temp1
+        return dummy.next   
 
