@@ -1,6 +1,6 @@
 class Solution:
     def nextGreaterElements(self, nums: List[int]) -> List[int]:
-        ans=[-1]*len(nums)
+        """ans=[-1]*len(nums)
         for i in range(len(nums)):
             found=False
             for j in range(i+1,len(nums)):
@@ -13,6 +13,16 @@ class Solution:
                     if nums[k]>nums[i]:
                         ans[i]=nums[k]
                         break
+        return ans"""
+
+        ans=[-1]*len(nums)
+        n=len(nums)
+        for i in range(len(nums)):
+            for j in range(i+1,n+i):
+                idx=j%n
+                if nums[i]<nums[idx]:
+                    ans[i]=nums[idx]
+                    break
         return ans
                 
             
