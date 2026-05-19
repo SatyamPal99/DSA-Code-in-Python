@@ -22,7 +22,7 @@ class Solution:
         return maxi"""
 
 
-        prefix=[0]*len(height)
+        """prefix=[0]*len(height)
         prefix[0]=height[0]
         for i in range(1,len(height)):
             prefix[i]=max(prefix[i-1],height[i])
@@ -41,6 +41,26 @@ class Solution:
             rmax=suffix[i]
             if height[i]<lmax and height[i]<rmax:
                 total=total+min(lmax,rmax)-height[i]
+        return total"""
+
+    #optimized approach
+        lmax=rmax=total=0
+        l=0
+        r=len(height)-1
+        while(l<r):
+            if height[l]<=height[r]:
+                if height[l]<lmax:
+                    total+=(lmax-height[l])
+                else:
+                    lmax=height[l]
+                l+=1
+            else:
+                if height[r]<rmax:
+                    total+=(rmax-height[r])
+                else:
+                    rmax=height[r]
+                r-=1
         return total
+    
 
     
