@@ -1,7 +1,6 @@
 class StockSpanner:
 
     def __init__(self): #when object created then by default constructor returns None..
-        self.prices = []
         self.st=[]
 
     def next(self, price: int) -> int:
