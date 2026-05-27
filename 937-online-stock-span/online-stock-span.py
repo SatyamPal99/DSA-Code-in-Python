@@ -3,7 +3,6 @@ class StockSpanner:
     def __init__(self): #when object created then by default constructor returns None..
         self.prices = []
         self.st=[]
-        self.ans=[]
 
     def next(self, price: int) -> int:
         """self.prices.append(price)
@@ -15,7 +14,6 @@ class StockSpanner:
         return span"""
 
 
-        self.prices.append(price)
         span=1
         while self.st and self.st[-1][0]<=price:
             ele=self.st.pop()
