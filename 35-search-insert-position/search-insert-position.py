@@ -1,10 +1,10 @@
 class Solution:
     def searchInsert(self, nums: List[int], tar: int) -> int:
-        if len(nums)==1:
+        """if len(nums)==1:
             if nums[0]>=tar:
                 return 0
             elif nums[0]<tar:
-                return 1
+                return 1"""
         i=0
         j=len(nums)-1
         while(i<=j):
