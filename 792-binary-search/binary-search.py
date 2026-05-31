@@ -1,6 +1,7 @@
 class Solution:
     def search(self, nums: List[int], tar: int) -> int:
-        i=0
+        #Iterative 
+        """i=0
         j=len(nums)-1
         
         while(i<=j):
@@ -11,6 +12,24 @@ class Solution:
                 j=mid-1
             else:
                 return mid
-        return -1
+        return -1"""
+
+        #Recursive code
+        i=0
+        j=len(nums)-1
+        return self.fun(nums,i,j,tar)
+
+    def fun(self,arr,i,j,tar):
+        mid=(i+j)//2
+        if i>j:
+            return -1
+        elif arr[mid]==tar:
+            return mid
+        
+        if tar>arr[mid]:
+            return self.fun(arr,mid+1,j,tar)
+        else:
+            return self.fun(arr,i,mid-1,tar)
+
 
         
