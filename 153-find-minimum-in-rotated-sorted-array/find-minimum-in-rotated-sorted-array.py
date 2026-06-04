@@ -5,6 +5,10 @@ class Solution:
         mini=99999
         while(low<=high):
             mid=(low+high)//2
+            if nums[low]<=nums[high]:
+                mini=min(mini,nums[low])
+                break
+                
             if nums[mid]>=nums[low]:
                 mini=min(mini,nums[low])
                 low=mid+1
