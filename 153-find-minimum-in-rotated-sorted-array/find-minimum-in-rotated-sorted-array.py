@@ -8,7 +8,7 @@ class Solution:
             if nums[mid]>=nums[low]:
                 mini=min(mini,nums[low])
                 low=mid+1
-            elif nums[mid]<=nums[high]:
+            else: 
                 mini=min(mini,nums[mid])
                 high=mid-1
         return mini
