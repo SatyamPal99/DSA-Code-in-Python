@@ -33,9 +33,11 @@ class Solution:
             mid=(low+high)//2
             if nums[mid-1]!=nums[mid] and nums[mid+1]!=nums[mid]:
                 return nums[mid]
+            #cases when we are on right half....
             if (mid%2!=0 and nums[mid+1]==nums[mid]) or (mid%2==0 and nums[mid]==nums[mid-1]):
                 high=mid-1
+            #cases when we are on left half....
             elif (mid%2==0 and nums[mid]==nums[mid+1]) or (mid%2!=0 and nums[mid]==nums[mid-1]):
                 low=mid+1
-        return nums[mid]
+        
 
