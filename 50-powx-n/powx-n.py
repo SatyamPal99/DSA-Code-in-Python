@@ -12,9 +12,9 @@ class Solution:
         return ans"""
 
         # Optimized Approach...
-
+        m=0
         if n<0:
-            x=1/x
+            m=n
             n=-n
         ans=1
         while(n>0):
@@ -24,6 +24,8 @@ class Solution:
             else:
                 x=x*x
                 n=n//2
+        if m<0:
+            return 1/ans
 
         return ans
 
