@@ -15,7 +15,7 @@ class Solution:
             return -1
         low=min(bloomDay)
         high=max(bloomDay)
-        ans=0
+        ans=high
         while(low<=high):
             mid=(low+high)//2
             if self.possible(bloomDay,mid,m,k)==1:
