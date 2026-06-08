@@ -16,12 +16,10 @@ class Solution:
         ans=math.inf
         while(low<=high):
             mid=(low+high)//2
-            temp=self.possible(nums,mid)
-            if temp<=threshold:
-                if mid<ans:
-                    ans=mid
-                    high=mid-1
-            elif temp>threshold:
+            if sum([ceil(num/mid) for num in nums])<=threshold:
+                ans=mid
+                high=mid-1
+            else:
                 low=mid+1
         return ans
 
@@ -29,10 +27,4 @@ class Solution:
 
     
 
-    def possible(self,nums,val):
-        sum=0
-        for i in range(len(nums)):
-            sum=sum+math.ceil(nums[i]/val)
-        return sum
-
-        
+    
