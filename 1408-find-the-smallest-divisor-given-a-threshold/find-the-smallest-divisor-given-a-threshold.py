@@ -13,7 +13,7 @@ class Solution:
 
         high=max(nums)
         low=1
-        ans=math.inf
+        ans=1
         while(low<=high):
             mid=(low+high)//2
             if sum([ceil(num/mid) for num in nums])<=threshold:
@@ -23,7 +23,14 @@ class Solution:
                 low=mid+1
         return ans
 
-    
+    # OR 
+        """low=1
+        high=max(nums)
+        ans=math.inf
+        while(low<=high):
+            mid=(low+high)//2
+            if self.sum_of_mid(nums,mid)<=threshold:"""
+
 
     
 
