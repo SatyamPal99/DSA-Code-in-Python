@@ -11,27 +11,37 @@ class Solution:
                 return i
         return -1"""
 
-        l,r = 1,max(nums)
+        """l,r = 1,max(nums)
         ans = 1
         while l <= r:
             m = (l+r)//2
-
             if (sum([ceil(num/m) for num in nums]) <= threshold):
                 ans = m
                 r = m - 1
             else:
-                l = m + 1
-        
-        return ans
+                l = m + 1  
+        return ans"""
 
 
     # OR 
-        """low=1
+        low=1
         high=max(nums)
         ans=math.inf
         while(low<=high):
             mid=(low+high)//2
-            if self.sum_of_mid(nums,mid)<=threshold:"""
+            if self.sum_of_mid(nums,mid)<=threshold:
+                ans=mid
+                high=mid-1
+            else:
+                low=mid+1
+        return ans
+
+    def sum_of_mid(self,nums,val):
+        sum=0
+        for i in range(len(nums)):
+            sum=sum+ceil(nums[i]/val)
+        return sum
+    
 
 
     
