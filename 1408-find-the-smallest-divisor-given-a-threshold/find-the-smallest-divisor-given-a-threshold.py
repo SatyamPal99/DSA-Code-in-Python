@@ -11,17 +11,19 @@ class Solution:
                 return i
         return -1"""
 
-        high=max(nums)
-        low=1
-        ans=1
-        while(low<=high):
-            mid=(low+high)//2
-            if sum([ceil(num/mid) for num in nums])<=threshold:
-                ans=mid
-                high=mid-1
+        l,r = 1,max(nums)
+        ans = 1
+        while l <= r:
+            m = (l+r)//2
+
+            if (sum([ceil(num/m) for num in nums]) <= threshold):
+                ans = m
+                r = m - 1
             else:
-                low=mid+1
+                l = m + 1
+        
         return ans
+
 
     # OR 
         """low=1
