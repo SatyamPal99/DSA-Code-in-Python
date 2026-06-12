@@ -6,8 +6,8 @@ class Solution:
                     return True
         return False"""
 
-        # Optimized Approach...
-        for i in range(len(mat)):
+        # Optimized Approach... [ TC=O(n+log(m)) = O(n) ]
+        """for i in range(len(mat)):
             if mat[i][0]<=tar and mat[i][len(mat[0])-1]>=tar:
                 low=0
                 high=len(mat[0])-1
@@ -19,6 +19,22 @@ class Solution:
                         low=mid+1
                     else:
                         high=mid-1
+        return False"""
+
+        # Optimized Approach... O(log(n*m))
+
+        low=0
+        high=len(mat)*len(mat[0])-1
+        while(low<=high):
+            mid=(low+high)//2
+            row=mid//len(mat[0])
+            col=mid%len(mat[0])
+            if mat[row][col]==tar:
+                return True
+            elif mat[row][col]<tar:
+                low=mid+1
+            else:
+                high=mid-1
         return False
 
         
