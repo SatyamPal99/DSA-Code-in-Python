@@ -8,7 +8,8 @@ class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         if root==None:
             return 0
-        self.dia=-math.inf
+        self.dia=-math.inf #instace variable(global var) it belongs to solution class so every 
+                              #                      method in this class can use it.
         self.fun(root)
         return self.dia
 
