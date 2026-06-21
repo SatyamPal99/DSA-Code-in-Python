@@ -32,13 +32,8 @@ class Solution:
             if node2.left:
                 q2.append((node2.left,x2-1))
         return True"""
-        if root.left==root.right==None:
-            return True
-        if (root.left==None or root.right==None):
-            return False
+        
 
-        if root.left.val!=root.right.val:
-            return False
         return self.fun(root.left,root.right)
     def fun(self,left_root,right_root):
         if left_root==None or right_root==None:
