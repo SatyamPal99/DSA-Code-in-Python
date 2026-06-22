@@ -7,7 +7,10 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        ans=[]
+
+        #Bruteforce
+
+        """ans=[]
         temp=[]
         self.fun(root,p,q,temp,ans)
         lis1=ans[0]
@@ -31,7 +34,20 @@ class Solution:
 
         self.fun(root.left,p,q,temp,ans)
         self.fun(root.right,p,q,temp,ans)
-        temp.pop()
+        temp.pop()"""
 
+
+        # Optimized Approach....
+
+        if root==None or root==p or root==q:
+            return root
 
         
+        ans1=self.lowestCommonAncestor(root.left,p,q)
+        ans2=self.lowestCommonAncestor(root.right,p,q)
+        if ans1==None:
+            return ans2
+        elif ans2==None:
+            return ans1
+        else:
+            return root
