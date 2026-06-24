@@ -10,11 +10,11 @@ class Solution:
         mapp={}
         self.parent_find(root,mapp)
         tar_root=target
-        visited={}
+        visited=[]
         q=deque()
         q.append(tar_root)
         dis=0
-        visited={tar_root}
+        visited.append(tar_root)
         while q:
             if dis==k:
                 return [i.val for i in q]
@@ -22,13 +22,13 @@ class Solution:
                 temp=q.popleft()
                 if temp.left and temp.left not in visited:
                     q.append(temp.left)
-                    visited.add(temp.left)
+                    visited.append(temp.left)
                 if temp.right and temp.right not in visited:
                     q.append(temp.right)
-                    visited.add(temp.right)
+                    visited.append(temp.right)
                 if temp in mapp and mapp[temp] not in visited:
                     q.append(mapp[temp])
-                    visited.add(mapp[temp])
+                    visited.append(mapp[temp])
             dis+=1
         return []
 
