@@ -8,24 +8,44 @@
 class Solution:
     def flatten(self, root: Optional[TreeNode]) -> None:
 
-        arr = []
 
+        # Bruteforce - time=O(n)  space = O(n)
+        """arr = []
         self.preorder(root, arr)
-
         for i in range(len(arr) - 1):
             arr[i].left = None
             arr[i].right = arr[i + 1]
-
         if arr:
             arr[-1].left = None
-            arr[-1].right = None
+            arr[-1].right = None"""
+        self.helper(root)
+
+
+    def helper(self,root):
+        if root==None:
+            return None
+        
+        left_tail=self.helper(root.left)
+        right_tail=self.helper(root.right)
+
+        if left_tail:
+            left_tail.right=root.right
+            root.right=root.left
+            root.left=None
+        if right_tail:
+            return right_tail
+        if left_tail:
+            return left_tail
+        return root
+        
+
+
+
 
     def preorder(self, root, arr):
-
         if root is None:
             return
 
         arr.append(root)
-
         self.preorder(root.left, arr)
         self.preorder(root.right, arr)
