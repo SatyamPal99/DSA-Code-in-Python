@@ -18,10 +18,28 @@ class Solution:
         if arr:
             arr[-1].left = None
             arr[-1].right = None"""
-        self.helper(root)
+
+        # using Recusion tail approach...
+        """self.helper(root)"""
+
+        # using Morris Traversal 
+        curr=root
+        while curr:
+            if curr.left:
+                prev=curr.left
+                while prev.right:
+                    prev=prev.right
+                prev.right=curr.right
+                curr.right=curr.left
+                curr.left=None
+            curr=curr.right
+        
 
 
-    def helper(self,root):
+
+
+
+    """def helper(self,root):
         if root==None:
             return None
         
@@ -37,10 +55,6 @@ class Solution:
         if left_tail:
             return left_tail
         return root
-        
-
-
-
 
     def preorder(self, root, arr):
         if root is None:
@@ -48,4 +62,4 @@ class Solution:
 
         arr.append(root)
         self.preorder(root.left, arr)
-        self.preorder(root.right, arr)
+        self.preorder(root.right, arr)"""
