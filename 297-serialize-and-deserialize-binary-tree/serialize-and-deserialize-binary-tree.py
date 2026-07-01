@@ -37,7 +37,7 @@ class Codec:
         i=1
         while q :
             curr=q.popleft()
-            if i<len(nodes) and nodes[i]!='#':
+            if  nodes[i]!='#':
                 curr.left=TreeNode(int(nodes[i]))
                 q.append(curr.left)
             i+=1
