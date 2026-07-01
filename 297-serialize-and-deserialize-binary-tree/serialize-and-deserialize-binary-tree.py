@@ -30,12 +30,14 @@ class Codec:
             return None
         
         nodes=data.split(',')[:-1]  # str to comma seperated list of char...
+        
+        
         root=TreeNode(int(nodes[0]))
         q=deque([root])
         i=1
-        while q and i<len(nodes):
+        while q :
             curr=q.popleft()
-            if nodes[i]!='#':
+            if i<len(nodes) and nodes[i]!='#':
                 curr.left=TreeNode(int(nodes[i]))
                 q.append(curr.left)
             i+=1
