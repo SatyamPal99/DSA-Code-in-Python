@@ -19,7 +19,7 @@ class Codec:
                 ans=ans+('#,')
             else:
                 ans=ans+(str(temp.val)+',')
-            if temp!=None:
+            
                 q.append(temp.left)
                 q.append(temp.right)
         print(ans)
