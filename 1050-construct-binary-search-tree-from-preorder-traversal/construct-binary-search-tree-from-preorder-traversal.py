@@ -6,7 +6,28 @@
 #         self.right = right
 class Solution:
     def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
-        inorder=sorted(preorder)
+        # Optimized Approach...
+        upper_bound=math.inf
+        self.i=0
+        return self.helper(preorder,upper_bound)
+
+    def helper(self,pre,ub):
+        if self.i>=len(pre) or pre[self.i]>ub:
+            return None
+
+        node=TreeNode(pre[self.i])
+        self.i+=1
+        node.left=self.helper(pre,node.val)
+        node.right=self.helper(pre,ub)
+        return node
+        
+
+
+
+
+
+
+        """inorder=sorted(preorder)
         mapp={}
         for i in range(len(inorder)):
             if inorder[i] not in mapp:
@@ -21,6 +42,6 @@ class Solution:
         left_nums=in_root-inSt
         node.left=self.fun(pre,preSt+1,left_nums+preSt,inorder,inSt,in_root-1,mapp)
         node.right=self.fun(pre,left_nums+preSt+1,preEnd,inorder,in_root+1,inEnd,mapp)
-        return node
+        return node"""
 
         
