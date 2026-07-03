@@ -11,13 +11,13 @@ class Solution:
         self.helper(root,k)
         return self.ans
 
-
     def helper(self,root,k):
-        if root==None:
+        if root==None or self.count>=k:
             return 
         
         self.helper(root.left,k)
-
+        
+        
         self.count+=1
         if self.count==k:
             self.ans=root.val
