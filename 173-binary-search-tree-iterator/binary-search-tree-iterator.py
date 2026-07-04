@@ -9,7 +9,6 @@ class BSTIterator:
         self.st=[]
         self.pushAll(root)
         
-
     def next(self) -> int:
         node=(self.st.pop())
         self.pushAll(node.right)
@@ -22,8 +21,6 @@ class BSTIterator:
             return False
 
     def pushAll(self,root):
-        if root==None:
-            return
         while root:
             self.st.append(root)
             root=root.left
