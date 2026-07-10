@@ -14,7 +14,7 @@ class Solution:
 
 
         # better
-        mapp={}
+        """mapp={}
         l=0
         r=0
         maxlen=0
@@ -27,7 +27,22 @@ class Solution:
                 l+=1
             maxlen=max(maxlen,r-l+1)
             r+=1
-        return maxlen
+        return maxlen"""
 
         # Optimal...
+        l=0
+        r=0
+        mapp={}
+        maxlen=0
+        while(r<len(fruits)):
+            mapp[fruits[r]]=mapp.get(fruits[r],0)+1
+            if len(mapp)>2:
+                mapp[fruits[l]]-=1
+                if mapp[fruits[l]]==0:
+                    del mapp[fruits[l]]
+                l+=1
+            maxlen=max(maxlen,r-l+1)
+            r+=1
+        return maxlen
+                
 
