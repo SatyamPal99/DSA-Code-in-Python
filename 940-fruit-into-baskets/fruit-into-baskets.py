@@ -1,5 +1,6 @@
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
+        # Bruteforce
         """maxlen=0
         for i in range(len(fruits)):
             mapp=set()
@@ -11,6 +12,8 @@ class Solution:
                     break
         return maxlen"""
 
+
+        # better
         mapp={}
         l=0
         r=0
@@ -25,4 +28,6 @@ class Solution:
             maxlen=max(maxlen,r-l+1)
             r+=1
         return maxlen
+
+        # Optimal...
 
