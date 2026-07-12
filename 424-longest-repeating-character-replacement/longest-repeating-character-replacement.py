@@ -43,14 +43,13 @@ class Solution:
         maxfreq=0
         cout=0
         while r<len(s):
-            mapp[ord(s[r])-ord('A')]=mapp.get(ord(s[r])-ord('A'),0)+1
+            mapp[ord(s[r])-ord('A')] = mapp.get(ord(s[r])-ord('A'),0)+1
             maxfreq=max(maxfreq,mapp[ord(s[r])-ord('A')])
-            if (r-l+1)-maxfreq<=k:
-                cout=max(cout,r-l+1)
-            else:
+            if (r-l+1)-maxfreq>k:
                 mapp[ord(s[l])-ord('A')]-=1
                 l+=1
                 maxfreq=max(mapp.values())
+            cout=max(cout,r-l+1)
             r+=1
         return cout
 
