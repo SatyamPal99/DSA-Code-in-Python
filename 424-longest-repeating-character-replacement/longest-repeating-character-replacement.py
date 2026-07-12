@@ -17,7 +17,7 @@ class Solution:
 
         # Optimized approach ....
 
-        l=0
+        """l=0
         r=0
         mapp={}
         maxfreq=0
@@ -33,7 +33,27 @@ class Solution:
                     l+=1
                     maxfreq=max(mapp.values())
             r+=1
+        return cout"""
+
+        # Optimized ...
+
+        l=0
+        r=0
+        mapp={}
+        maxfreq=0
+        cout=0
+        while r<len(s):
+            mapp[ord(s[r])-ord('A')]=mapp.get(ord(s[r])-ord('A'),0)+1
+            maxfreq=max(maxfreq,mapp[ord(s[r])-ord('A')])
+            if (r-l+1)-maxfreq<=k:
+                cout=max(cout,r-l+1)
+            else:
+                mapp[ord(s[l])-ord('A')]-=1
+                l+=1
+                maxfreq=max(mapp.values())
+            r+=1
         return cout
+
 
 
 
