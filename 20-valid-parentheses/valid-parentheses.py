@@ -5,6 +5,7 @@ class Solution:
             if s[i]== '(' or s[i]=='{' or s[i]=='[' :
                 st.append(s[i])
             else:
+                # for test case: "}]" (i.e only closings) or string starting with closing braces.
                 if len(st)==0:
                     return False
                 ch=st[-1]
