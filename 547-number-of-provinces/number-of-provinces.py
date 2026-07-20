@@ -12,11 +12,11 @@ class Solution:
         vis=[0]*v
         for i in range(v):
             if vis[i]==0:
-                self.bfs(isConnected,i,vis,adj)
+                self.bfs(i,vis,adj)
                 ans+=1
         return ans
 
-    def bfs(self,mat,i,vis,adj):
+    def bfs(self,i,vis,adj):
         q=deque()
         q.append(i)
         vis[i]=1
