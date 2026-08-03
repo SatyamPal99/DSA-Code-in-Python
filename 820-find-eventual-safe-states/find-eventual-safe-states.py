@@ -1,6 +1,6 @@
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-        V=len(graph)
+        """V=len(graph)
         vis=[0]*V
         pathVis=[0]*V
         safe=[0]*V
@@ -11,7 +11,37 @@ class Solution:
         for i in range(V):
             if safe[i]==1:
                 ans.append(i)
+        return ans"""
+
+        # using BFS/ toposort...
+
+        V=len(graph)
+        indeg=[0]*V
+        adj=[[] for _ in range(V)]
+        for i in range(V):
+            for j in graph[i]:
+                adj[j].append(i)
+                indeg[i]+=1
+        ans=[]
+        q=deque()
+        for i in range(V):
+            if indeg[i]==0:
+                q.append(i)
+        while(q):
+            node=q.popleft()
+            ans.append(node)
+            for i in adj[node]:
+                indeg[i]-=1
+                if indeg[i]==0:
+                    q.append(i)
+        ans.sort()
         return ans
+
+
+
+
+
+        ans=[]
 
 
 
