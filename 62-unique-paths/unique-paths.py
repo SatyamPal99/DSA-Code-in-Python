@@ -13,7 +13,7 @@ class Solution:
                 dp[i][j]=down+right
         return dp[0][0]"""
 
-        # Space Optimization
+        
         #top down tabular
 
         dp=[[0]*(n) for _ in range(m+1)]
@@ -29,13 +29,28 @@ class Solution:
                     if j>0:
                         down=dp[i][j-1]
                     dp[i][j]=up+down
-        return dp[m-1][n-1] 
+        return dp[m-1][n-1]
 
-        """down=1
-        right=0
-        for i in range(m-1,-1,-1):
-            for j in range(n-1,-1,-1):
-                curr=down+right"""
+
+        # space optimization
+
+        prev=[0]*n
+        for i in range(m):
+            curr=[0]*n
+            for j in range(n):
+                if i==0 and j==0:
+                    curr[i][j]=1
+                else:
+                    up=0
+                    down=0
+                    if i>0:
+                        up=prev[j]
+                    if j>0:
+                        down=curr[j-1]
+                    curr[j]=up+down
+            prev=curr
+        return prev[m-1]
+
 
 
 
