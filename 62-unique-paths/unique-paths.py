@@ -16,7 +16,7 @@ class Solution:
         
         #top down tabular
 
-        dp=[[0]*(n) for _ in range(m+1)]
+        """dp=[[0]*(n) for _ in range(m+1)]
         for i in range(0,m):
             for j in range(0,n):
                 if i==0 and j==0:
@@ -29,7 +29,7 @@ class Solution:
                     if j>0:
                         down=dp[i][j-1]
                     dp[i][j]=up+down
-        return dp[m-1][n-1]
+        return dp[m-1][n-1]"""
 
 
         # space optimization
@@ -39,7 +39,7 @@ class Solution:
             curr=[0]*n
             for j in range(n):
                 if i==0 and j==0:
-                    curr[i][j]=1
+                    curr[j]=1
                 else:
                     up=0
                     down=0
@@ -49,7 +49,7 @@ class Solution:
                         down=curr[j-1]
                     curr[j]=up+down
             prev=curr
-        return prev[m-1]
+        return prev[-1]
 
 
 
