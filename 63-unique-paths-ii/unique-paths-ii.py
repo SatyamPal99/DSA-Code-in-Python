@@ -2,9 +2,31 @@ class Solution:
     def uniquePathsWithObstacles(self, grid: list[list[int]]) -> int:
         n=len(grid)
         m=len(grid[0])
-        dp=[[-1]*m for _ in range(n)]
-        
-        return self.fun(n-1,m-1,grid,dp)
+        """dp=[[-1]*m for _ in range(n)]
+        return self.fun(n-1,m-1,grid,dp)"""
+
+        # Tabular DP
+        dp=[[0]*(m) for _ in range(n)]
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j]==1:
+                    continue
+                elif i==0 and j==0 :
+                    if grid[i][j]==1:
+                        dp[i][j]=0
+                    dp[i][j]=1
+                else:
+                    up=0
+                    left=0
+                    if i>0 and grid[i][j]==0:
+                        up=dp[i-1][j]
+                    if j>0 and grid[i][j]==0:
+                        left=dp[i][j-1]
+                    dp[i][j]=up+left
+        return dp[n-1][m-1]
+
+
+
 
     def fun(self,n,m,grid,dp):
         if n<0 or m<0:
