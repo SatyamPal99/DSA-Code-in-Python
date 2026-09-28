@@ -6,7 +6,7 @@ class Solution:
         return self.fun(n-1,m-1,grid,dp)"""
 
         # Tabular DP
-        dp=[[0]*(m) for _ in range(n)]
+        """dp=[[0]*(m) for _ in range(n)]
         for i in range(n):
             for j in range(m):
                 if grid[i][j]==1:
@@ -23,7 +23,30 @@ class Solution:
                     if j>0 and grid[i][j]==0:
                         left=dp[i][j-1]
                     dp[i][j]=up+left
-        return dp[n-1][m-1]
+        return dp[n-1][m-1]"""
+
+        # space optimization...
+
+        prev=[0]*m
+        for i in range(n):
+            temp=[0]*m
+            for j in range(m):
+                if grid[i][j]==1:
+                    continue
+                elif i==0 and j==0 :
+                    if grid[i][j]==1:
+                        dp[i][j]=0
+                    temp[j]=1
+                else:
+                    up=0
+                    left=0
+                    if i>0 and grid[i][j]==0:
+                        up=prev[j]
+                    if j>0 and grid[i][j]==0:
+                        left=temp[j-1]
+                    temp[j]=up+left
+            prev=temp
+        return prev[-1]
 
 
 
