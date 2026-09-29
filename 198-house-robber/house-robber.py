@@ -5,7 +5,7 @@ class Solution:
         return self.fun(n-1,nums,dp)"""
 
         #Tabular DP
-        if n==1:
+        """if n==1:
             return nums[0]
         dp=[-1]*(n+1)
         dp[0]=nums[0]
@@ -17,31 +17,30 @@ class Solution:
             else:
                 dp[i]=max(dp[i-2]+nums[i],dp[i-3]+nums[i])
             ans=max(dp[i],ans)
-        return ans
+        return ans"""
 
 
 
         #Space Optimization...
-        """n=len(nums)
-
         if n==1:
             return nums[0]
-        if n==2:
-            return max(nums[0],nums[1])
-        if n==3:
-            return max(nums[1],nums[0]+nums[2])
-
-        prev3=nums[0]
-        prev2=nums[1]
-        prev1=max(nums[1],nums[0]+nums[2])
-        ans=max(prev1,prev2,prev3)
-        for i in range(3,n):
-            curr=max(prev2+nums[i],prev3+nums[i])
-            prev3=prev2
-            prev2=prev1
-            prev1=curr
+        prev=nums[1]
+        prev1=nums[0]
+        prev2=None
+        ans=max(prev,prev1)
+        for i in range(2,n):
+            if i==2:
+                curr=prev1+nums[i]
+                prev2=prev1
+                prev1=prev
+                prev=curr
+            else:
+                curr=max(prev2+nums[i],prev1+nums[i])
+                prev2=prev1
+                prev1=prev
+                prev=curr
             ans=max(ans,curr)
-        return ans"""
+        return ans
 
 
     def fun(self,n,nums,dp):
