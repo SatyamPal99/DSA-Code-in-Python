@@ -2,7 +2,7 @@ class Solution:
     def minPathSum(self, grid: list[list[int]]) -> int:
         n=len(grid)
         m=len(grid[0])
-        dp=[[-1]*(m+1) for _ in range(n+1)]
+        dp=[[-1]*(m) for _ in range(n)]
         return self.fun(n-1,m-1,grid,dp)
 
     def fun(self,n,m,grid,dp):
