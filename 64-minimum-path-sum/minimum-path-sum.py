@@ -2,8 +2,8 @@ class Solution:
     def minPathSum(self, grid: list[list[int]]) -> int:
         n=len(grid)
         m=len(grid[0])
-        dp=[[-1]*(m) for _ in range(n)]
-        return self.fun(n-1,m-1,grid,dp)
+        """dp=[[-1]*(m) for _ in range(n)]
+        return self.fun(n-1,m-1,grid,dp)"""
 
         # Tabular dp
         """dp=[[0]*(m) for _ in range(n)]
@@ -23,6 +23,22 @@ class Solution:
         return dp[n-1][m-1]"""
 
         # space optimization...
+        prev=[math.inf]*(m)
+        for i in range(n):
+            temp=[0]*(m)
+            for j in range(m):
+                if i==0 and j==0:
+                    temp[j]=grid[0][0]
+                else:
+                    up=math.inf
+                    left=math.inf
+                    if i>0:
+                        up=prev[j]+grid[i][j]
+                    if j>0:
+                        left=temp[j-1]+grid[i][j]
+                    temp[j]=min(up,left)
+            prev=temp
+        return prev[-1]
 
 
 
