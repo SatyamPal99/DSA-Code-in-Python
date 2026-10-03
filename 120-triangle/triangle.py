@@ -6,7 +6,7 @@ class Solution:
 
         # Tabular DP...
 
-        dp=[[None]*n for _ in range(n)]
+        """dp=[[None]*n for _ in range(n)]
         for i in range(n):
             dp[n-1][i]=triangle[n-1][i]
 
@@ -15,7 +15,23 @@ class Solution:
                 down=triangle[i][j]+dp[i+1][j]
                 dia=triangle[i][j]+dp[i+1][j+1]
                 dp[i][j]=min(down,dia)
-        return dp[0][0]
+        return dp[0][0]"""
+
+        # space optimization...
+
+        prev=[0]*n
+        for i in range(n):
+            prev[i]=triangle[n-1][i]
+        for i in range(n-2,-1,-1):
+            curr=[None]*(n)
+            for j in range(i,-1,-1):
+                down=triangle[i][j]+prev[j]
+                dia=triangle[i][j]+prev[j+1]
+                curr[j]=min(down,dia)
+            prev=curr
+        return prev[0]
+        
+
 
     def fun(self,arr,i,j,dp):
         if i==len(arr)-1:
