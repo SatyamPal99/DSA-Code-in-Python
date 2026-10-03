@@ -1,8 +1,21 @@
 class Solution:
     def minimumTotal(self, triangle: list[list[int]]) -> int:
         n=len(triangle)
-        dp=[[None]*(n) for _ in range(n)]
-        return self.fun(triangle,0,0,dp)
+        """dp=[[None]*(n) for _ in range(n)]
+        return self.fun(triangle,0,0,dp)"""
+
+        # Tabular DP...
+
+        dp=[[None]*n for _ in range(n)]
+        for i in range(n):
+            dp[n-1][i]=triangle[n-1][i]
+
+        for i in range(n-2,-1,-1):
+            for j in range(i,-1,-1):
+                down=triangle[i][j]+dp[i+1][j]
+                dia=triangle[i][j]+dp[i+1][j+1]
+                dp[i][j]=min(down,dia)
+        return dp[0][0]
 
     def fun(self,arr,i,j,dp):
         if i==len(arr)-1:
