@@ -8,7 +8,7 @@ class Solution:
             ans=min(ans,temp)
         return ans"""
 
-        dp=[[None]*(n) for _ in range(n)]
+        """dp=[[None]*(n) for _ in range(n)]
         for i in range(n):
             dp[0][i]=matrix[0][i]
 
@@ -26,9 +26,29 @@ class Solution:
         mini=math.inf
         for i in range(n):
             mini=min(mini,dp[n-1][i])
-        print(dp)
+        return mini"""
+
+        # Space optimization...
+        prev=[0 for _ in range(n)]
+        for i in range(n):
+            prev[i]=matrix[0][i]
+        for i in range(1,n):
+            curr=[0 for i in range(n)]
+            for j in range(n):
+                left=(math.inf)
+                right=(math.inf)
+                if j-1>=0:
+                    left=matrix[i][j]+prev[j-1]
+                if j+1<n:
+                    right=matrix[i][j]+prev[j+1]
+                up=matrix[i][j]+prev[j]
+                curr[j]=min(left,right,up)
+            prev=curr
+
+        mini=math.inf
+        for i in range(n):
+            mini= min(mini,prev[i])
         return mini
-        
         
 
 
