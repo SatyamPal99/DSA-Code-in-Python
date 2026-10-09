@@ -1,12 +1,36 @@
 class Solution:
     def minFallingPathSum(self, matrix: list[list[int]]) -> int:
         n=len(matrix)
-        ans=math.inf
+        """ans=math.inf
         dp=[[None]*(n) for _ in range(n)]
         for i in range(n-1,-1,-1):
             temp=self.fun(matrix,n-1,i,dp)
             ans=min(ans,temp)
-        return ans
+        return ans"""
+
+        dp=[[None]*(n) for _ in range(n)]
+        for i in range(n):
+            dp[0][i]=matrix[0][i]
+
+        for i in range(1,n):
+            for j in range(0,n):
+                left=(math.inf)
+                right=(math.inf)
+                if j-1>=0:
+                    left=matrix[i][j]+dp[i-1][j-1]
+                if j+1<n:
+                    right=matrix[i][j]+dp[i-1][j+1]
+                up=matrix[i][j]+dp[i-1][j]
+                dp[i][j]=min(left,right,up)
+
+        mini=math.inf
+        for i in range(n):
+            mini=min(mini,dp[n-1][i])
+        print(dp)
+        return mini
+        
+        
+
 
     def fun(self,arr,i,j,dp):
         if j<0 or j>=len(arr):
