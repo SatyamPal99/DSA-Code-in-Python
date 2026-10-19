@@ -8,7 +8,28 @@ class Solution:
         n=len(nums)
         sum=sum//2
         dp=[[None]*(sum+1) for _ in range(n)]
-        return self.fun(nums,sum,len(nums)-1,dp)
+        """return self.fun(nums,sum,len(nums)-1,dp)"""
+
+        # Memoization...
+        for i in range(n):
+            dp[i][0]=True
+        for i in range(1,sum+1):
+            if nums[0]==i:
+                dp[0][i]=True
+            else:
+                dp[0][i]=False
+
+        for i in range(1,n):
+            for j in range(1,sum+1):
+                if nums[i]==j:
+                    dp[i][j]=True
+                right=dp[i-1][j]
+                left=False
+                if nums[i]<=sum:
+                    left=dp[i-1][j-nums[i]]
+                dp[i][j]=right or left
+        return dp[n-1][sum]
+
 
     def fun(self,nums,sum,i,dp):
         if sum==0 or nums[i]==sum:
