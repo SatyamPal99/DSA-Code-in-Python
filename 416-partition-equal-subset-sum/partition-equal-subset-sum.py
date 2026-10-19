@@ -21,8 +21,6 @@ class Solution:
 
         for i in range(1,n):
             for j in range(1,sum+1):
-                if nums[i]==j:
-                    dp[i][j]=True
                 right=dp[i-1][j]
                 left=False
                 if nums[i]<=sum:
