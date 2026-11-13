@@ -35,7 +35,7 @@ class Solution:
         ans=0
         while(high<len(fruits)):
             d[fruits[high]]=d.get(fruits[high],0)+1
-            while(len(d)>2):
+            if(len(d)>2):
                 d[fruits[low]]-=1
                 if d[fruits[low]]==0:
                     del d[fruits[low]]
