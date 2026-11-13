@@ -29,8 +29,27 @@ class Solution:
             r+=1
         return maxlen"""
 
+        d={}
+        low=0
+        high=0
+        ans=0
+        while(high<len(fruits)):
+            d[fruits[high]]=d.get(fruits[high],0)+1
+            while(len(d)>2):
+                d[fruits[low]]-=1
+                if d[fruits[low]]==0:
+                    del d[fruits[low]]
+                low+=1
+            
+            ans=max(ans,high-low+1)
+            high+=1
+        return ans
+
+
+
+
         # Optimal...
-        l=0
+        """l=0
         r=0
         mapp={}
         maxlen=0
@@ -43,6 +62,7 @@ class Solution:
                 l+=1
             maxlen=max(maxlen,r-l+1)
             r+=1
-        return maxlen
+        return maxlen"""
+
                 
 
