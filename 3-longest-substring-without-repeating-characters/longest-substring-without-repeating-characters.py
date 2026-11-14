@@ -18,11 +18,10 @@ class Solution:
         ans=0
         d={}
         while(h<len(s)):
-            d[s[h]]=d.get(s[h],0)+1
-            if d[s[h]]>0:
-                while(d[s[h]]>1):
-                    d[s[l]]-=1
-                    l+=1
+            d[s[h]]=d.get(s[h],0)+1 
+            while(d[s[h]]>1):
+                d[s[l]]-=1
+                l+=1
             ans=max(ans,h-l+1)
             h+=1
         return ans
